@@ -1,0 +1,18 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+md/
+uv.lock
+
+# Virtual environments
+.venv
+
+.vscode/
+data/
+*.mp4
+*.npz
+.envrc

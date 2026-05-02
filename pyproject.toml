@@ -1,0 +1,26 @@
+[project]
+name = "optical-navigation-homework-v2"
+version = "0.1.0"
+description = "Optical navigation homework"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.10.9",
+    "numpy>=2.4.4",
+    "opencv-python>=4.13.0.92",
+]
+
+[dependency-groups]
+dev = [
+    "basedpyright>=1.39.3",
+    "ruff>=0.15.12",
+    "debugpy>=1.8.20",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.basedpyright]
+reportAny = false
+reportExplicitAny = false
+reportUnusedCallResult = false
