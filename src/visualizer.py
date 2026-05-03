@@ -1,9 +1,7 @@
 """Live visualization of the visual-odometry pipeline.
 
 Renders the rectified frame, tracked points, optical-flow vectors, and a
-status overlay. The rectified (not raw) frame is shown because that is the
-image LK is actually operating on — drawing tracked points in raw-pixel
-space would put them in the wrong location.
+status overlay.
 """
 
 import cv2 as cv
