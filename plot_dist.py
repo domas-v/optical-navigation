@@ -17,7 +17,7 @@ from src.logs import FlightLogs, haversine
 NPZ_PATH = "odometry.npz"
 
 
-def main(log_path: Path) -> None:
+def main(log_path: Path, npz_path: Path) -> None:
     logs = FlightLogs.from_path(log_path)
     if logs.latitude is None or logs.longitude is None:
         raise ValueError("Log must include latitude and longitude")
@@ -29,7 +29,7 @@ def main(log_path: Path) -> None:
     cum_m = np.concatenate([[0.0], np.cumsum(step_m)])
     total_m = logs.gps_distance_m()
 
-    data = np.load(NPZ_PATH)
+    data = np.load(npz_path)
     tx_px = data["tx_px"]
     ty_px = data["ty_px"]
     width = int(data["width"])
@@ -77,10 +77,13 @@ def main(log_path: Path) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Plot GPS vs odometry from odometry.npz")
     parser.add_argument("--log", type=str, required=True, help="Flight log")
+    parser.add_argument("--npz", type=str, required=True, help="NPZ file")
     args = parser.parse_args()
 
     log_path = Path(args.log)
+    npz_path = Path(args.npz)
     if not log_path.exists():
         raise FileNotFoundError(f"Log file not found: {log_path}")
-
-    main(log_path)
+    if not npz_path.exists():
+        raise FileNotFoundError(f"NPZ file not found: {npz_path}")
+    main(log_path, npz_path)

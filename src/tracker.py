@@ -1,11 +1,8 @@
-from pathlib import Path
-
 import cv2 as cv
 import numpy as np
 
 from src.frame import Frame
 from src.intrinsics import CameraIntrinsics
-from src.video_helpers import VideoParameters
 
 
 def make_mask(width: int, height: int) -> np.ndarray:

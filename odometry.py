@@ -115,7 +115,7 @@ def main(
     # save for plotting
     # with python plot_dist.py --log path/to/log.csv
     np.savez(
-        "odometry.npz",
+        f"odometry_{hfov}_{vfov}.npz",
         frame_idx=np.asarray(t_frame_idx, dtype=int),
         tx_px=np.asarray(tx_px, dtype=float),
         ty_px=np.asarray(ty_px, dtype=float),
